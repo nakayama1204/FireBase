@@ -32,7 +32,7 @@
         v-model="input"
         :disabled="!user.uid"
         @keydown.enter.exact.prevent="doSend"></textarea>
-      <button type="submit" :disabled="!user.uid" class="send-button">Send</button>
+      <button type="submit" :disabled="!user.uid" class="send-button">送信</button>
     </form>
   </div>
 </template>
