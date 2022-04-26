@@ -20,7 +20,7 @@
         <div class="item-detail">
           <div class="item-name">{{ name }}</div>
           <div class="item-message">
-            <nl2br tag="div" :text="message" />
+            <nl2br tag="div" :text="message"/>
           </div>
         </div>
       </section>
@@ -32,19 +32,16 @@
         v-model="input"
         :disabled="!user.uid"
         @keydown.enter.exact.prevent="doSend"></textarea>
-      <button type="submit" :disabled="!user.uid" class="send-button">送信</button>
+      <button type="submit" :disabled="!user.uid" class="send-button">Send</button>
     </form>
   </div>
 </template>
 
 <script>
 // firebase モジュール
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
-import 'firebase/compat/database'
+import firebase from 'firebase'
 // 改行を <br> タグに変換するモジュール
-import Nl2br from 'vue3-nl2br'
-
+import Nl2br from 'vue-nl2br'
 export default {
   components: { Nl2br },
   data() {
@@ -171,9 +168,6 @@ export default {
   background: #deefe8;
   border-radius: 4px;
   line-height: 1.2em;
-}
-.item-message > div > br:first-of-type {
-  display: none;
 }
 .item-message::before {
   position: absolute;
