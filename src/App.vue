@@ -172,6 +172,7 @@ export default {
   border-radius: 4px;
   line-height: 1.2em;
 }
+/*messageの空白を消すためのもの*/
 .item-message > div > br:first-of-type {
   display: none;
 }
