@@ -42,6 +42,7 @@
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
+
 // 改行を <br> タグに変換するモジュール
 import Nl2br from 'vue3-nl2br'
 
