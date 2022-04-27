@@ -20,8 +20,7 @@
         <div class="item-detail">
           <div class="item-name">{{ name }}</div>
           <div class="item-message">
-            <!-- <nl2br tag="div" :text="message" /> -->
-            <p>{{ message }}</p>
+            <nl2br tag="div" :text="message" />
           </div>
         </div>
       </section>
@@ -44,10 +43,10 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/auth'
 import 'firebase/compat/database'
 // 改行を <br> タグに変換するモジュール
-//import Nl2br from 'vue3-nl2br'
+import Nl2br from 'vue3-nl2br'
 
 export default {
-  //components: { Nl2br },
+  components: { Nl2br },
   data() {
     return {
       user: {},  // ユーザー情報
@@ -177,9 +176,6 @@ export default {
 /* .item-message > div > br:first-of-type {
   display: none;
 } */
-.item-message > div {
-  white-space: pre-line;
-}
 .item-message::before {
   position: absolute;
   content: " ";
