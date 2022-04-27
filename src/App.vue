@@ -20,7 +20,8 @@
         <div class="item-detail">
           <div class="item-name">{{ name }}</div>
           <div class="item-message">
-            <nl2br tag="div" :text="message" />
+            <nl2br tag="div" :text="message" class="nl2br" v-if="isActive" />
+            <!-- <div class="pre-formatted">{{ message }}</div> -->
           </div>
         </div>
       </section>
@@ -52,7 +53,8 @@ export default {
     return {
       user: {},  // ユーザー情報
       chat: [],  // 取得したメッセージを入れる配列
-      input: ''  // 入力したメッセージ
+      input: '',  // 入力したメッセージ
+      isActive: true
     }
   },
   created() {
@@ -93,7 +95,8 @@ export default {
         key: snap.key,
         name: message.name,
         image: message.image,
-        message: message.message
+        message: message.message,
+        time: message.time
       })
       this.scrollBottom()
     },
@@ -103,7 +106,8 @@ export default {
         firebase.database().ref('message').push({
           message: this.input,
           name: this.user.displayName,
-          image: this.user.photoURL
+          image: this.user.photoURL,
+          time: this.user.times
         }, () => {
           this.input = '' // フォームを空にする
         })
@@ -174,9 +178,12 @@ export default {
   line-height: 1.2em;
 }
 /*messageの空白を消すためのもの*/
+/* .pre-formatted {
+  white-space: pre;
+} */
 /* .item-message > div > br:first-of-type {
   display: none;
-} */
+}  */
 .item-message::before {
   position: absolute;
   content: " ";
