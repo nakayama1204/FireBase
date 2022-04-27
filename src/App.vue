@@ -173,9 +173,9 @@ export default {
   line-height: 1.2em;
 }
 /*messageの空白を消すためのもの*/
-.item-message > div > br:first-of-type {
+/* .item-message > div > br:first-of-type {
   display: none;
-}
+} */
 .item-message::before {
   position: absolute;
   content: " ";
