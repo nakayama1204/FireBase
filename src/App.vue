@@ -20,7 +20,7 @@
         <div class="item-detail">
           <div class="item-name">{{ name }}</div>
           <div class="item-message">
-            <nl2br tag="div" :text='message' />
+            <nl2br tag="div" :text='message' class="pre-formatted" />
           </div>
         </div>
       </section>
@@ -31,8 +31,9 @@
       <textarea
         v-model="input"
         :disabled="!user.uid"
-        @keydown.enter.exact.prevent="doSend"></textarea>
-      <button type="submit" :disabled="!user.uid" class="send-button">Send</button>
+        @keypress.enter.exact.prevent="doSend"
+        ></textarea>
+      <button type="submit" :disabled="!user.uid" class="send-button">send</button>
     </form>
   </div>
 </template>
@@ -53,6 +54,7 @@ export default {
       user: {},  // ユーザー情報
       chat: [],  // 取得したメッセージを入れる配列
       input: '',  // 入力したメッセージ
+      br: {}
     }
   },
   created() {
@@ -108,7 +110,7 @@ export default {
           this.input = '' // フォームを空にする
         })
       }
-    }
+    },
   }
 }
 </script>
@@ -173,6 +175,11 @@ export default {
   border-radius: 4px;
   line-height: 1.2em;
 }
+/*messageの空白を消すためのもの*/
+/* .pre-formatted {
+  white-space: pre;
+} */
+
 .item-message::before {
   position: absolute;
   content: " ";
