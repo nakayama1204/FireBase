@@ -20,7 +20,7 @@ export default {
             if (!Array.isArray(accumulator)) {
               return [accumulator, h("br"), string];
             }
-            return accumulator.concat([ string , h("br")]);
+            return accumulator.concat([ string , h("br") ]);
           }, [])
       );
   }
