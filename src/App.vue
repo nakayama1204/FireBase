@@ -20,8 +20,7 @@
         <div class="item-detail">
           <div class="item-name">{{ name }}</div>
           <div class="item-message">
-            <nl2br tag="div" :text="message" class="nl2br" v-if="isActive" />
-            <!-- <div class="pre-formatted">{{ message }}</div> -->
+            <nl2br tag="div" :text='message' />
           </div>
         </div>
       </section>
@@ -45,7 +44,7 @@ import 'firebase/compat/auth'
 import 'firebase/compat/database'
 
 // 改行を <br> タグに変換するモジュール
-import Nl2br from 'vue3-nl2br'
+import Nl2br from './nl2br'
 
 export default {
   components: { Nl2br },
@@ -54,7 +53,6 @@ export default {
       user: {},  // ユーザー情報
       chat: [],  // 取得したメッセージを入れる配列
       input: '',  // 入力したメッセージ
-      isActive: true
     }
   },
   created() {
@@ -95,8 +93,7 @@ export default {
         key: snap.key,
         name: message.name,
         image: message.image,
-        message: message.message,
-        time: message.time
+        message: message.message
       })
       this.scrollBottom()
     },
@@ -106,8 +103,7 @@ export default {
         firebase.database().ref('message').push({
           message: this.input,
           name: this.user.displayName,
-          image: this.user.photoURL,
-          time: this.user.times
+          image: this.user.photoURL
         }, () => {
           this.input = '' // フォームを空にする
         })
@@ -177,13 +173,6 @@ export default {
   border-radius: 4px;
   line-height: 1.2em;
 }
-/*messageの空白を消すためのもの*/
-/* .pre-formatted {
-  white-space: pre;
-} */
-/* .item-message > div > br:first-of-type {
-  display: none;
-}  */
 .item-message::before {
   position: absolute;
   content: " ";
