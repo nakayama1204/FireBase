@@ -25,5 +25,7 @@ const auth = firebase.auth();
 
 export { auth, db };
 
+
+
 /* eslint-disable no-new */
 createApp(App).mount('#app')
